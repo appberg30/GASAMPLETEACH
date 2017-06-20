@@ -1,0 +1,67 @@
+//COURSE OBJECTIVES:
+
+By the end of this lesson students will be able to demonstrate a use case that explains prototypal 
+inheritance and the kind of flexibility it gives programmers.
+
+///PLEASE NOTE
+In this lesson it is assumed that students already have some basic programming knowledge, such as the understanding of variables,
+functions and objects.
+
+//KEY WORDS/TERMS
+Blue Print
+Constructor Function
+Object
+Prototype
+Paramaters
+D.R.Y
+This
+New
+
+
+//-- PRACTICAL TASK--//
+//Create BASIC Add to cart function using Javascript Prototypal Inheritance
+
+//STEP ONE
+
+//Define empty cart array to store product objects
+var cart = [];
+
+//STEP TWO
+
+//Create Product constructor function.
+//In the case of our product constructor function we don't actually need anything in it.
+var Product = function(){}
+
+//Define our get tax function
+Product.prototype.getTax = function(){
+    var taxAmount = 10;
+    return taxAmount;
+}
+
+
+//Define our add to cart prototype function
+Product.prototype.addToCart = function(qty,cost,sku){
+  if(qty != undefined && cost != undefined && sku != undefined){  
+      var total = qty * cost;
+      //store product data in array
+      var productObj = {
+          itemSku: sku,
+          itemQty: qty,
+          itemCost: cost,
+          itemTotal: total,
+          _thisTax: this.getTax()
+      }
+      
+      cart.Product = [];
+      cart.Product.push(productObj);
+    }else{
+      console.log('Please enter all values correctly.');
+    }
+}
+
+
+
+var newProduct = new Product();
+
+newProduct.addToCart(2,6,'#12389');
+
